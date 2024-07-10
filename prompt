@@ -1,0 +1,119 @@
+You will be shown a markdown version of an article and the name of an irish start-up company. 
+
+Your reply should be in JSON format, and should include if the article is referring directly to the company.
+
+The most important step is this:
+You must first check if the article provided seems like it is directly related to the irish company or start-up provided, and if so, set the “is_referenced” feature to true.
+1. Verify that the company mentioned in the article matches the description in the startup blurb. This involves checking for specific details such as industry, products, services, or activities that align with the startup blurb. 
+2. If the company name matches but the industry, products, services, or activities do not, set the "is_referenced" feature to false.
+3. Set the "is_referenced" feature to true if and ONLY if the article is directly about the specific company described in the blurb.
+4. Consider that most of the startups will be Irish in origin. 
+5. Think before you answer, and provide a final reason for your decision in the "reason" feature. You will be required to provide justification for your decision in the "reason" feature.
+
+
+Additional, if possible:
+If there is a date in the article, return the format DD-MM-YY. If this format is not possible (i.e. if some data is missing, such as day/month is known but year is not) return null.
+
+Additionally, you must categorize the article. The categories you are allowed to select from are: Startup press coverage, Testimonial, NDRC press coverage, Investments, Product Launch, Startup update, Partnership, Startup Launch, Awards and Testimonial. 
+
+These categories are defined as follows:
+Startup press coverage: Articles that provide general news or updates about startups. This includes media coverage on startup activities, milestones, achievements, or significant developments that attract public or media interest.
+Testimonial: Articles that feature personal experiences or endorsements from users, customers, or partners - often feedback.
+NDRC press coverage: Articles specifically about startups associated with the NDRC (National Digital Research Centre). This includes news on NDRC programs, startups incubated or accelerated by the NDRC.
+Investments: Articles focused on financial investments received by startups. Ensure you response is the word "Investments" plural. Not singular.
+Product Launch: Articles that announce the release of a new product, service or a feature by a startup. 
+Startup update: Articles that provide updates on the progress, developments, or changes within a startup.
+Partnership: Articles about collaborations or alliances between startups and other companies or organizations.
+Startup Launch: Articles announcing the official launch of a new startup.
+Awards: Articles that report on awards or recognitions received by a startup. This category also includes testimonials from notable figures or institutions praising the startup for its achievements or impact.
+
+Finally:
+Please ensure your response contains no formatting, and is simply the pure json response (i.e no new lines, no spaces, no tabs, no use of ```json formatting, etc.)
+
+Your response should include the following fields:
+    - company: the name of the company
+    - reason: a brief explanation of why the article is or is not about the company
+    - is_referenced: If there is any mention of the specific company, including information about new store openings, product details, partnerships, or any other activities related to the company or their products, set the “is_referenced” to True, set it to False otherwise if the company, activities or products are not mentioned.
+    - title: the title of the article
+    - investment: if the article mentions an investment, the amount of the investment, otherwise null
+    - category: the category of the article
+    - date: the date of the article in the format DD-MM-YY
+    - context: a one line summary of the article content 
+                                    
+An example of an company, Hiiker and expected response is shown below: 
+
+Example Company: Hiiker
+Example blurb: Helping people explore the world's best hiking trails reliably and safely, with a community of 65k users
+
+"# Hiiker reaches milestone with €500,000 investment
+#### Elaine Burke
+14 JUL 2022 
+
+CEO and co-founder Paul Finlay. Image: Hiiker
+
+The Irish hiking tech start-up is blazing a trail for the US as it maps out its growth plans for the coming year.
+
+Former SiliconRepublic.com [Start-up of the Week](https://www.siliconrepublic.com/start-ups/hiiker-app-startup-ireland) Hiiker has secured €500,000 in investment from Fuel Ventures, Enterprise Ireland and several private investors.
+
+Co-founder and CEO Paul Finlay said the funding round marks "an important milestone on a journey that is just starting".
+
+Founded in 2020 by a team of hikers-cum-hackers, Hiiker has developed an app to make it easier to plan hikes. A free version of the app gives access to routes and basic features, while once-off payments and subscriptions can unlock premium features.
+
+Self-taught developer Finlay set up Hiiker with friends Eoin Hamilton, who directs the company's media and marketing, and Pete Britton, who leads on design. CTO Mark Finlay joined the trio later.
+
+The Irish start-up was selected for the [first ever NDRC accelerator](https://www.siliconrepublic.com/start-ups/ndrc-accelerator-2021-dogpatch-labs) hosted by Dogpatch Labs in 2021, receiving €100,000 in pre-seed investment. Finlay was thankful to Dogpatch Labs founder [Patrick Walsh](https://www.siliconrepublic.com/start-ups/patrick-walsh-ndrc-accelerator-dogpatch-labs-irish-startups) and head of platform [Menno Axt](https://www.siliconrepublic.com/start-ups/dogpatch-labs-ndrc-menno-axt-startup-advice-ireland), "without whose long chats, guidance and belief we would not be at this milestone".
+
+Hiiker started out focused on long-distance hiking trails, providing information on routes, accommodation, weather and more. Earlier this summer, it launched a next-gen product for more casual hikers, paving the way for further growth.
+
+As of this month, Hiiker has reached more than 380,000 users. "We have also seen over 200pc growth in clicks for the summer months this year versus 2021," said CMO Hamilton. "This is exciting to see as we enter the busiest period of the year for hiking."
+
+Hiiker also enables users to donate to trail organisations via the app, a feature that has been welcomed by Galeo Saintz, founding chair of the World Trails Network. "This is a wonderful step forward in integrating trail technology with fundraising and trail organisations," said Saintz. "Now the many organisations behind trail care and maintenance have a more direct source of funding from trail users."
+
+CEO Finlay said Hiiker is now in "hyper-growth mode" and that a Series A is "coming soon". This next-level investment is expected to close in late 2023, early 2024.
+
+The focus now is on growth and preparing for a US launch in 2023. The Hiiker team will be expanding with more engineering and production staff.
+
+"This is an emotional time," said Finlay. "If I had thought a few years back that I could be building a company that helps get people hiking with some of my best friends, I would have never believed it."
+
+Alexander Breeden of Fuel Ventures said, "You can tell this app has been built by hikers for hikers and the team's passion and enthusiasm is in abundance.
+
+"Their traction in terms of users and revenue to date with no marketing spend has been exceptionally strong and we look forward to their expansion with this round."
+”
+
+Example reply:
+    {{
+        "company": "Hiiker",
+        "reason": "The article is about Hiiker, as it discusses the company's recent investment of €500,000 from Fuel Ventures, Enterprise Ireland and several private investors.",
+        "is_referenced": true,
+        "title": "Hiiker reaches milestone with €500,000 investment",
+        "investment": 500,000,
+        "category": "Investment",
+        “date”: “14/07/22”
+        "context": "Hiiker has secured €500,000 in investment from Fuel Ventures, Enterprise Ireland and several private investors."
+    }}  
+    
+Example Company: Memo 
+Example blurb: Add a personal video message for more engaging gifts with our ecommerce integration.
+
+"# Public relations startup Memo raises $7 million in seed funding
+##### Sean Czarnecki
+A startup has raised $7 million from investors in Uber, Robinhood, and The Trade Desk to improve the way public relations is measuredRead in app. Eddie Kim, founder and CEO of Memo Eddie Kim, founder and CEO of Memo. Memo, a startup that helps measure public relations work, has raised $7 million in seed funding.Susa Ventures and MHS Capital led the funding round.Memo plans to use the proceeds to more than double its headcount to about 50.Thanks for signing up!Access your favorite topics in a personalized feed while you're on the go.By clicking "Sign Up", you accept our Terms of Service and Privacy Policy. You can opt-out at any time by visiting our Preferences page or by clicking "unsubscribe" at the bottom of the email.BullMemo, a public relations software company, has raised $7 million in seed funding to help take on the likes of Cision, the world's largest PR tech vendor.Founded in 2018 by Eddie Kim, Memo says it can show exactly how many people have read an article and how they read it, through exclusive agreements with publishers like Condé Nast, Forbes, and The Washington Post. It claims its approach is more accurate than other PR software companies that rely on third-party data. Its clients include Google, Samsung, and Walmart.Kim, also Memo's CEO, said he would use the funding to more than double the headcount to about 50 people, and hire a head of marketing. He declined to disclose Memo's annual revenue, valuation, or the stake the company sold.Related storiesThe funding was led by MHS Capital and includes Susa Ventures, an original Robinhood investor.Other investors included LightShed Ventures and Founder Collective, which invested in The Trade Desk, Uber, and Coupang. The round also included individual investors like Jonah Goodhart, founder and former CEO of Moat; Matt Minoff, the former chief digital officer at Meredith; and Evan Giamanco, SVP of sales operations and strategy at Warner Media.Rich Greenfield, general partner of LightShed, said Memo piqued his interest with its metric called "earned media value," which claims to calculate the dollar value of an article based on how many people read it by comparing how much it would cost a brand to get the same amount of attention with paid media, like an ad or sponsored content."Earned media is a massive market, but the challenge for brands has been quantifying it," Greenfield said. "Memo has established a completely new measurement standard for earned media that is rapidly gaining industry momentum."Kim said this metric differentiates his company from advertising value equivalency, an outdated metric that tries to quantify an article's value by comparing the average cost of a display ad with a publication's circulation. This metric says how many people potentially read a story, not how many actually read it; in 2017, a UK PR trade organization banned its use.Memo's seed round coincides with rising investor interest in the PR industry from private equity firms and other financiers. The influx of capital has intensified competition and consolidation. For example, Cision sold itself to Platinum Equity for $2.7 billion and acquired social listening company Brandwatch for $450 million."
+    
+Example reply:
+{{
+    "company": "Memo",
+    "reason": "The company in the article is a start-up which shares the name of 'Memo' with the provided company, however the industry and product are completly different. The Memo from the article is a public relations app, and the Memo provided focuses specifically on ecommerce applications"
+    "is_referenced": false,
+    "title": "Public relations startup Memo raises $7 million in seed funding",
+    "investment": 7,000,000,
+    "category": "Investment",
+    “date”: “02/07/24”,
+    "context": "Public relations software company Memo gets $7 million to better measure earned media value."
+}}  
+
+Real Company: {company}
+Startup blurb: {startup_blurb}
+Real Article:
+"{content}"
+
+Reply:
