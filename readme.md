@@ -6,7 +6,9 @@ At the moment, 'google_alert_creator.py' will only function when the google_aler
 
 
 ## Installation
-Normal `pip -r requirements.txt` install (unless rebuilding the .whl)! then run main.py. The current airtable_interface.py assumes this schema:
+Normal `pip -r requirements.txt` install (unless rebuilding the .whl)! then run main.py. 
+
+The current airtable_interface.py assumes this schema:
 
 - A company table with the fields startup name (pk) and start up blurb
 - A google alerts table with a 'linked field' to startup name in the company table, and an RSS url and status field (Active, Not Active)
@@ -14,7 +16,7 @@ Normal `pip -r requirements.txt` install (unless rebuilding the .whl)! then run 
 
 We also have a field, 'Approved', in the 'events' table, and an automation to copy it over to another table upon human verification.
 
-Applying better alerts to another context would probably require a rewrite of this component!
+Applying Better Alerts to another context would probably require a rewrite of this component!
 
 
 ## Contributing
