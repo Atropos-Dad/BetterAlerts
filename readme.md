@@ -22,17 +22,14 @@ Applying better alerts to another context would probably require a rewrite of th
 Contributions are of course welcome! There are for sure some places in which additional work is needed for this tool to be leveraged by a general audience!
 
 - [ ] Article source expansion
-        - There are tons of different areas could
-
 - [ ] Proper logging 
-
 - [ ] Unit tests! 
-
 - [ ] More generic outputs
-
 - [ ] generating output as processing occurs
-
 - [ ] Generic 'plug 'n play' llm interface
 
 
-## Contributors
+## Authors
+https://github.com/De3pBlu3
+https://github.com/MiaBorkoo
+https://github.com/dylan-teehan-skc
