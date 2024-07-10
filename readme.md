@@ -1,5 +1,4 @@
-# Project Name: Better Alerts!
-
+# Better Alerts!
 ## Description
 Better Alerts is a LLM enabled web scraping tool designed to extract data from publications with a paticular focus on assessing RSS feeds (from google alerts). The current prompt used to extract data is specific to Irish tech start-ups and with some small modifications could be expanded to other contexts too!
 
