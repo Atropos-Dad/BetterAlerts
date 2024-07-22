@@ -31,6 +31,6 @@ Contributions are of course welcome! There are for sure some places in which add
 
 
 ## Authors
-https://github.com/De3pBlu3
+https://github.com/Atropos-Dad
 https://github.com/MiaBorkoo
 https://github.com/dylan-teehan-skc
