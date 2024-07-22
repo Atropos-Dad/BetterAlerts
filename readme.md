@@ -6,7 +6,7 @@ At the moment, 'google_alert_creator.py' will only function when the google_aler
 
 
 ## Installation
-Normal `pip -r requirements.txt` install (unless rebuilding the .whl)! then run main.py. 
+Normal `pip -r requirements.txt` install (unless rebuilding the .whl)! then run main.py.
 
 The current airtable_interface.py assumes this schema:
 
